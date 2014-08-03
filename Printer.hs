@@ -6,7 +6,7 @@ import Test.Hspec
 showExp :: Expr -> String
 showExp (Var x) = x
 showExp (Lam x y) = "\\" ++ x ++ "." ++ showExp y
-showExp (App x y) = show x ++ " " ++ show y
+showExp (App x y) = showExp x ++ " " ++ showExp y
 
 (|@|) :: (Show a, Eq a) => a -> a -> Expectation
 (|@|) = shouldBe
@@ -20,3 +20,6 @@ main = hspec $ do
     it "lambda printer" $ do
         showExp (Lam "x" (Var "x")) |@| "\\x.x"
         showExp (Lam "x" (Lam "y" (Var "x"))) |@| "\\x.\\y.x"
+
+    it "function application printer" $ do
+        showExp (App (Var "f") (Var "x")) |@| "f x"
