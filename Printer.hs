@@ -6,11 +6,15 @@ import Test.Hspec
 showExp :: Expr -> String
 showExp (Var x) = x
 showExp (Lam x y) = "\\" ++ x ++ "." ++ showExp y
-showExp (App x y) = showExp x ++ " " ++ maybeWrap y
+showExp (App x y) = wrapLeft x ++ " " ++ wrapRight y
 
-maybeWrap :: Expr -> String
-maybeWrap (Var x) = x
-maybeWrap x = "(" ++ showExp x ++ ")"
+wrapLeft :: Expr -> String
+wrapLeft x@(Lam _ _) = "(" ++ showExp x ++ ")"
+wrapLeft x = showExp x
+
+wrapRight :: Expr -> String
+wrapRight (Var x) = x
+wrapRight x = "(" ++ showExp x ++ ")"
 
 (|@|) :: (Show a, Eq a) => a -> a -> Expectation
 (|@|) = shouldBe
