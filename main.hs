@@ -7,8 +7,6 @@ import Types
 import Printer
 import Parser
 
-pp = putStrLn . p
-
 isApp :: Expr -> Bool
 isApp (App _ _) = True
 isApp _ = False
