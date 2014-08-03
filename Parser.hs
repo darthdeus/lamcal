@@ -28,7 +28,7 @@ terminal :: Parser Expr
 terminal = try var <|> lambda <|> pars expr
 
 expr :: Parser Expr
-expr = try app <|> try var <|> lambda
+expr = try app <|> lambda <|> var
 
 test :: String -> Either ParseError Expr
 test = parse expr "lambda calculus parser"
