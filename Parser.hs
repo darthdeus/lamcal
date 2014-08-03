@@ -1,4 +1,4 @@
-module Parser where
+module Parser (test) where
 
 import Control.Applicative hiding ((<|>))
 
