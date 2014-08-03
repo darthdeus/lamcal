@@ -2,7 +2,10 @@
 {-# LANGUAGE GADTs #-}
 module Main where
 
+import Control.Applicative
 import Types
+import Printer
+import Parser
 
 pp = putStrLn . p
 
