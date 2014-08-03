@@ -2,7 +2,7 @@ module Parser where
 
 import Control.Applicative hiding ((<|>))
 
-import Main (Expr(..))
+import Types
 import Text.Parsec.Prim
 import Text.Parsec.Char
 import Text.Parsec.Combinator
