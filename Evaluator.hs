@@ -2,5 +2,6 @@ module Evaluator where
 
 import Types
 
-eval :: Expr -> Expr
-eval = undefined
+substitute :: String -> String -> Expr -> Expr
+substitute name value (Var x) | name == x = Var value
+                              | otherwise = Var x
