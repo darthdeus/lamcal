@@ -23,12 +23,13 @@ parseVar = Var <$> many1 letter
 
 parseApp :: Parser Expr
 parseApp = do
-    f <- parseVar
+    f <- parseExpr
     char ' '
     x <- parseExpr
     return $ App f x
 
 parseExpr :: Parser Expr
-parseExpr = try parseLambda <|> try parseApp <|> parseVar
+parseExpr = do
+    try parseLambda <|> try parseApp <|> parseVar
 
 test = parse parseExpr "lambda calculus parser"
