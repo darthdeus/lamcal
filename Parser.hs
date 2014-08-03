@@ -42,6 +42,7 @@ testParser p = parse p ""
     Left x -> fail $ show x
     Right x -> x `shouldBe` y
 
+main :: IO ()
 main = hspec $ do
     it "app" $ do
         testParser app "f x" |@| App (Var "f") (Var "x")
