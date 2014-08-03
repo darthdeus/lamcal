@@ -13,7 +13,7 @@ wrapLeft x@(Lam _ _) = "(" ++ showExp x ++ ")"
 wrapLeft x = showExp x
 
 wrapRight :: Expr -> String
-wrapRight (Var x) = x
+wrapRight (Var x) = x -- TODO - only app
 wrapRight x = "(" ++ showExp x ++ ")"
 
 (|@|) :: (Show a, Eq a) => a -> a -> Expectation
