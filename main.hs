@@ -18,3 +18,21 @@ p :: Expr -> String
 p (Var x) = x
 p (Lam x t) = "\\" ++ x ++ "." ++ paren t
 p (App f x) = paren f ++ " " ++ paren x
+
+main :: IO ()
+main = do
+    putStrLn "Give me λ expressions and I shall fix their parens"
+
+    let loop = do
+        putStr "λ "
+        input <- getLine
+        case simplify input of
+            Right res -> putStrLn res
+            Left e -> print e
+
+        loop
+
+    loop
+
+
+simplify input = showExp <$> test input
