@@ -18,6 +18,6 @@ omega :: Expr
 omega = App f f where f = Lam "x" (App (Var "x") (Var "x"))
 
 pair, fst, snd :: Expr
-pair = Lam "x" (Lam "y" (Lam "p" (App (App (Var "p") (Var "x")) (Var "y")))) -- "\x y p. p x y"
+pair = Lam "x" (Lam "y" (Lam "p" (App (App (Var "p") (Var "x")) (Var "y"))))
 fst = true
 snd = false
