@@ -27,3 +27,5 @@ main = hspec $ do
 
     it "function application printer" $ do
         showExp (App (Var "f") (Var "x")) |@| "f x"
+        showExp (App (App (Var "f") (Var "g")) (Var "x")) |@| "f g x"
+        showExp (App (Var "f") (App (Var "g") (Var "x"))) |@| "f (g x)"
