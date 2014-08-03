@@ -16,7 +16,6 @@ data Expr = Var Identifier
           | App Expr Expr
             deriving Show
 
--- instance Show Expr where
 pp :: Either ParseError Expr -> IO ()
 pp (Left e) = print e
 pp (Right e) = putStrLn $ p e
@@ -24,8 +23,6 @@ pp (Right e) = putStrLn $ p e
     p (Var x) = x
     p (Lam x t) = "\\" ++ x ++ "." ++ p t
     p (App f x) = "(" ++ p f ++ " " ++ p x ++ ")"
-
-
 
 parseLambda :: Parser Expr
 parseLambda = do
