@@ -8,6 +8,10 @@ import Text.Parsec.Char
 import Text.Parsec.Combinator
 import Text.Parsec.String
 
+pp :: Show a => Either a Expr -> IO ()
+pp (Left e) = print e
+pp (Right e) = putStrLn $ p e
+
 parseLambda :: Parser Expr
 parseLambda = do
     binding <- char '\\' *> many1 letter <* char '.'
